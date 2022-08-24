@@ -1,20 +1,17 @@
 //Links the HTML Div Class to the Javascript file
 const grid = document.querySelector (".grid")
-let a = 1;
+
+
+//defines questions that determine how many rows and columns there are
+let rowAmount = prompt("How many rows?", 1);
+let columnAmount = prompt("How many columns?", 1)
 
 //creates grid function
 let createGrid = function () {
 
-//defines questions that determine how many rows and columns there are
-    let rowAmount = prompt("How many rows?", 1);
-    let columnAmount = prompt("How many columns?", 1)
-
-    //for l// create first amount of grids based on amount of columns
-//skip to second row after column amount has been reache d.
-
-
- //event Handlersp that creates rows, based off previous question
+    //for loop that creates rows, based off previous question then appends them to the page
     for (i = 1; i <= rowAmount; i++) {
+        let a = 1;
         const row = document.createElement ("div")
         row.setAttribute  ("id", "row" + i)
         row.style.cssText = "display:flex; margin: 1px; gap: 1px;"
@@ -30,14 +27,9 @@ let createGrid = function () {
                 a += 1;   
             }
         }
-    }
-
-//Creates the actual grid
- createGrid();
-
-
- //Event Handlers
- //-----------------------------------------------
+ 
+//Event Handlers
+//-----------------------------------------------
 
  //creates NodeList that selects all elements with id of "square"
 const squares = document.querySelectorAll ("#square")
@@ -47,8 +39,48 @@ const squares = document.querySelectorAll ("#square")
 for (let i = 0; i < squares.length; i++) {
     squares[i].addEventListener("mouseover", addColor)
 }
+} 
+
+//Creates the actual grid
+ createGrid();
+
+ //Grid Resettng
+
+ //Creates Button Element 
+ newGrid = document.createElement("button");
+ //Sets Button to an ID and gives it the tag of resetButton
+ newGrid.setAttribute("id", "resetButton");
+ newGrid.innerText = "New Grid?"
+ //appends button to body
+document.body.insertBefore(newGrid, grid);
+ //Creates a button Click Event that runs resetGrid on button click
+ newGridButtonClick = document.querySelector("#resetButton").addEventListener("click", resetGrid)
+
+//Resets The Grid
+//Selects the Grid and wipes the innerHTML (old grid)
+//Asks question of how many squares should be in new Grid and sets that to columnRow and rowAmount/
+//Runs create CreateGrid
+function resetGrid() {
+    document.querySelector(".grid").innerHTML = "";
+    newSquareAmount = prompt("How many squares?", "1") 
+    columnAmount = newSquareAmount
+    rowAmount = newSquareAmount
+
+    createGrid();
+
+//creates NodeList that selects all elements with id of "square" AGAIN
+    const squares = document.querySelectorAll ("#square")
+
+//loops through the nodelist and adds an eventListener to each node that runs addColor when
+//the element is moused over AGAIN
+    for (let i = 0; i < squares.length; i++) {
+        squares[i].addEventListener("mouseover", addColor)
+    }
+}
 
 //Sets the style of the element in question.
  function addColor() {
-    this.style.cssText = `height: 20px; width: 20px; border:solid; border-color:black; background-color:red ;`
+    this.style.cssText = `height: 20px; width: 20px; border:solid; border-color:black; background-color:purple;`
 }
+
+
