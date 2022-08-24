@@ -28,9 +28,8 @@ let createGrid = function () {
             }
         }
  
-//Event Handlers
+//Event Handlers for CreateGridFunction
 //-----------------------------------------------
-
  //creates NodeList that selects all elements with id of "square"
 const squares = document.querySelectorAll ("#square")
 
@@ -38,14 +37,13 @@ const squares = document.querySelectorAll ("#square")
 //the element is moused over
 for (let i = 0; i < squares.length; i++) {
     squares[i].addEventListener("mouseover", addColor)
-}
+    }
 } 
 
 //Creates the actual grid
  createGrid();
 
  //Grid Resettng
-
  //Creates Button Element 
  newGrid = document.createElement("button");
  //Sets Button to an ID and gives it the tag of resetButton
@@ -65,17 +63,7 @@ function resetGrid() {
     newSquareAmount = prompt("How many squares?", "1") 
     columnAmount = newSquareAmount
     rowAmount = newSquareAmount
-
     createGrid();
-
-//creates NodeList that selects all elements with id of "square" AGAIN
-    const squares = document.querySelectorAll ("#square")
-
-//loops through the nodelist and adds an eventListener to each node that runs addColor when
-//the element is moused over AGAIN
-    for (let i = 0; i < squares.length; i++) {
-        squares[i].addEventListener("mouseover", addColor)
-    }
 }
 
 //Sets the style of the element in question.
