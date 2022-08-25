@@ -68,7 +68,9 @@ function resetGrid() {
 
 //Sets the style of the element in question.
  function addColor() {
-    this.style.cssText = `height: 20px; width: 20px; border:solid; border-color:black; background-color:purple;`
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    this.style.cssText = `height: 20px; width: 20px; border:solid; border-color:black; background-color:#${randomColor};`
+    console.log(this.style.cssText)
 }
 
 
